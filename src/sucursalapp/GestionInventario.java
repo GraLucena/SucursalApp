@@ -9,7 +9,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  * Clase que permite la visualizacion de los inventarios
- *
+ *eoeoeoeoeoeooeoeoe
  * @author Diego Alienware
  */
 
