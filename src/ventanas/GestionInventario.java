@@ -2,14 +2,15 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package sucursalapp;
+package ventanas;
 
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
+import sucursalapp.XMLInventario;
 
 /**
  * Clase que permite la visualizacion de los inventarios
- *eoeoeoeoeoeooeoeoe
+ *
  * @author Diego Alienware
  */
 

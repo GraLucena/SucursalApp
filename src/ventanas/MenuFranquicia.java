@@ -1,4 +1,4 @@
-package sucursalapp;
+package ventanas;
 
 import java.io.File;
 import javax.swing.JOptionPane;
