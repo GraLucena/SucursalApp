@@ -4,6 +4,7 @@
  */
 package sucursalapp;
 
+import ventanas.GestionInventario;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -67,7 +68,7 @@ public class XMLInventario {
         return true;
     }
     
-    void listarInventario(GestionInventario ventana, String archivo) {
+    public void listarInventario(GestionInventario ventana, String archivo) {
         try {
             SAXBuilder builder = new SAXBuilder(false);
             //System.out.println(usuario);
