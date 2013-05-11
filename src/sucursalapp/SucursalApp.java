@@ -4,6 +4,7 @@
  */
 package sucursalapp;
 
+import sockets.Replicador;
 import ventanas.MenuFranquicia;
 import sockets.Servidor;
 
@@ -22,5 +23,8 @@ public class SucursalApp {
 
         Servidor servidor = new Servidor(args[0]);
         new Thread(servidor).start();
+        
+        Replicador replicador = new Replicador("Estoy arriba", args[1], args[2]);
+        new Thread(replicador).start();
     }
 }
