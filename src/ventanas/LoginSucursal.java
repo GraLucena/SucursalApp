@@ -3,15 +3,17 @@ package ventanas;
 import java.io.File;
 import javax.swing.JOptionPane;
 import javax.swing.*;
+import sucursalapp.Coordinador;
+import sucursalapp.XMLSucursal;
 
 /**
  * Menú principal de la franquicia.
  *
  * @author daniel
  */
-public class MenuFranquicia extends javax.swing.JFrame {
+public class LoginSucursal extends javax.swing.JFrame {
 
-    public MenuFranquicia() {
+    public LoginSucursal() {
         initComponents();
     }
 
@@ -25,36 +27,31 @@ public class MenuFranquicia extends javax.swing.JFrame {
     private void initComponents() {
 
         jLayeredPane1 = new javax.swing.JLayeredPane();
-        jBProductos = new javax.swing.JButton();
-        jBInventario = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        jTnombre = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        jPassword = new javax.swing.JPasswordField();
+        jBlogin = new javax.swing.JButton();
+        jLsucursal = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBounds(new java.awt.Rectangle(0, 0, 0, 0));
 
-        jBProductos.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jBProductos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/productos.png"))); // NOI18N
-        jBProductos.setText("Productos");
-        jBProductos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBProductosActionPerformed(evt);
-            }
-        });
-        jBProductos.setBounds(180, 160, 180, 60);
-        jLayeredPane1.add(jBProductos, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLabel5.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel5.setText("Password:");
+        jLabel5.setBounds(130, 210, 70, 15);
+        jLayeredPane1.add(jLabel5, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        jBInventario.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jBInventario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Inventory.png"))); // NOI18N
-        jBInventario.setText("Inventario");
-        jBInventario.addActionListener(new java.awt.event.ActionListener() {
+        jTnombre.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jTnombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBInventarioActionPerformed(evt);
+                jTnombreActionPerformed(evt);
             }
         });
-        jBInventario.setBounds(180, 240, 180, 60);
-        jLayeredPane1.add(jBInventario, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jTnombre.setBounds(200, 170, 120, 21);
+        jLayeredPane1.add(jTnombre, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/carrinho supermercado.png"))); // NOI18N
         jLabel3.setText("Logo");
@@ -62,9 +59,26 @@ public class MenuFranquicia extends javax.swing.JFrame {
         jLayeredPane1.add(jLabel3, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
-        jLabel1.setText("SuperMercados XYZ");
-        jLabel1.setBounds(120, 50, 200, 30);
+        jLabel1.setText("Login Sucursal ");
+        jLabel1.setBounds(170, 50, 150, 30);
         jLayeredPane1.add(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jPassword.setBounds(200, 210, 120, 20);
+        jLayeredPane1.add(jPassword, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        jBlogin.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jBlogin.setText("Login");
+        jBlogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBloginActionPerformed(evt);
+            }
+        });
+        jBlogin.setBounds(220, 260, 73, 23);
+        jLayeredPane1.add(jBlogin, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        jLsucursal.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLsucursal.setText("Sucursal:");
+        jLsucursal.setBounds(130, 170, 60, 15);
+        jLayeredPane1.add(jLsucursal, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondos-verdes.jpg"))); // NOI18N
         jLabel2.setText("jLabel2");
@@ -87,14 +101,30 @@ public class MenuFranquicia extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jBProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBProductosActionPerformed
-        
-    }//GEN-LAST:event_jBProductosActionPerformed
+    private void jTnombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTnombreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTnombreActionPerformed
 
-    private void jBInventarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBInventarioActionPerformed
-        GestionInventario inventario = new GestionInventario();
-        inventario.setVisible(true);
-    }//GEN-LAST:event_jBInventarioActionPerformed
+    private void jBloginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBloginActionPerformed
+            XMLSucursal sucursales = new XMLSucursal();
+            if(sucursales.comprobarUsuarios(this.jTnombre.getText(), this.jPassword.getText())!=false)
+            {
+                Coordinador validarCoordinador = new Coordinador();
+                validarCoordinador.buscar(this.jTnombre.getText());
+                if(sucursalapp.SucursalApp.coordinador.equals("si"))
+                {
+                    System.out.println("soy coordinador");
+                }
+                else
+                {
+                    System.out.println("no soy coordinador");
+                }
+                MenuSucursal menu = new MenuSucursal(this.jTnombre.getText());
+                menu.setVisible(true);
+            }
+            else
+            JOptionPane.showMessageDialog(null, "Usuario o Contraseña incorrecta", "ERROR", JOptionPane.ERROR_MESSAGE);
+    }//GEN-LAST:event_jBloginActionPerformed
 
     /**
      * @param args the command line arguments
@@ -113,20 +143,20 @@ public class MenuFranquicia extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MenuFranquicia.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoginSucursal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MenuFranquicia.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoginSucursal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MenuFranquicia.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoginSucursal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MenuFranquicia.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoginSucursal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MenuFranquicia().setVisible(true);
+                new LoginSucursal().setVisible(true);
             }
         });
     }
@@ -134,11 +164,14 @@ public class MenuFranquicia extends javax.swing.JFrame {
      * Inicializa los componentes principales de la ventana
      */
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jBInventario;
-    private javax.swing.JButton jBProductos;
+    private javax.swing.JButton jBlogin;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLayeredPane jLayeredPane1;
+    private javax.swing.JLabel jLsucursal;
+    private javax.swing.JPasswordField jPassword;
+    private javax.swing.JTextField jTnombre;
     // End of variables declaration//GEN-END:variables
 }

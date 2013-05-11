@@ -4,7 +4,7 @@
  */
 package sucursalapp;
 
-import ventanas.MenuFranquicia;
+import ventanas.LoginSucursal;
 import sockets.Servidor;
 
 /**
@@ -13,11 +13,12 @@ import sockets.Servidor;
  */
 public class SucursalApp {
 
+    public static String coordinador = "no";
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        MenuFranquicia menu = new MenuFranquicia();
+        LoginSucursal menu = new LoginSucursal();
         menu.setVisible(true);
 
         Servidor servidor = new Servidor(args[0]);
