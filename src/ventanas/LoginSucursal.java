@@ -3,8 +3,8 @@ package ventanas;
 import java.io.File;
 import javax.swing.JOptionPane;
 import javax.swing.*;
-import sucursalapp.Coordinador;
-import sucursalapp.XMLSucursal;
+import sucursalapp.*;
+
 
 /**
  * Menú principal de la franquicia.
@@ -110,13 +110,16 @@ public class LoginSucursal extends javax.swing.JFrame {
             if(sucursales.comprobarUsuarios(this.jTnombre.getText(), this.jPassword.getText())!=false)
             {
                 Coordinador validarCoordinador = new Coordinador();
-                validarCoordinador.buscar(this.jTnombre.getText());
+                Sucursal sucursal = new Sucursal();
+                validarCoordinador.buscarCoordinador(this.jTnombre.getText());
                 if(sucursalapp.SucursalApp.coordinador.equals("si"))
                 {
+                    validarCoordinador.trabajarComoCoordinador();
                     System.out.println("soy coordinador");
                 }
                 else
                 {
+                    sucursal.trabajarComoSucursal();
                     System.out.println("no soy coordinador");
                 }
                 MenuSucursal menu = new MenuSucursal(this.jTnombre.getText());

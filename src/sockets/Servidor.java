@@ -4,6 +4,7 @@ import java.io.DataInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 
@@ -37,7 +38,7 @@ public class Servidor implements Runnable{
             while (prueba) {
 
                 socketServicio = servicio.accept();
-
+                System.out.println("alguien se conecto");
                 DataInputStream in = new DataInputStream(socketServicio.getInputStream());
                 String fileName = in.readUTF();
                 OutputStream output = new FileOutputStream(fileName);
