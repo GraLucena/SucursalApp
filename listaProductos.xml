@@ -14,7 +14,7 @@
   <producto>
     <nombre>Cebolla</nombre>
     <descripcion>Cebolla</descripcion>
-    <costo>100</costo>
+    <costo>60</costo>
     <status>Inactivo</status>
   </producto>
   <producto>
@@ -26,19 +26,7 @@
   <producto>
     <nombre>Caraotas</nombre>
     <descripcion>Caraotas</descripcion>
-    <costo>100</costo>
-    <status>Activo</status>
-  </producto>
-  <producto>
-    <nombre>Naranja</nombre>
-    <descripcion>Naranja</descripcion>
-    <costo>20</costo>
-    <status>Inactivo</status>
-  </producto>
-  <producto>
-    <nombre>Patillas</nombre>
-    <descripcion>Patillas</descripcion>
-    <costo>18</costo>
+    <costo>40</costo>
     <status>Activo</status>
   </producto>
 </root>
