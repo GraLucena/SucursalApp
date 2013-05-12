@@ -112,16 +112,7 @@ public class LoginSucursal extends javax.swing.JFrame {
                 Coordinador validarCoordinador = new Coordinador();
                 Sucursal sucursal = new Sucursal();
                 validarCoordinador.buscarCoordinador(this.jTnombre.getText());
-                if(sucursalapp.SucursalApp.coordinador.equals("si"))
-                {
-                    validarCoordinador.trabajarComoCoordinador();
-                    System.out.println("soy coordinador");
-                }
-                else
-                {
-                    sucursal.trabajarComoSucursal();
-                    System.out.println("no soy coordinador");
-                }
+                
                 MenuSucursal menu = new MenuSucursal(this.jTnombre.getText());
                 menu.setVisible(true);
             }

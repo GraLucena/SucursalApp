@@ -56,6 +56,7 @@ public class Coordinador {
             if (nombre.equals(node.getChildText("nombre")) == true)     
             {
                 SucursalApp.coordinador = "si";
+                System.out.println("soy coordinador");
                 return true;
             }
         }   
@@ -88,25 +89,18 @@ public class Coordinador {
         return "not found";
     }
      
-     public void trabajarComoCoordinador() 
-     {
-         boolean prueba = true;
-         
-         while (prueba)
-         {
-            File f = new File("sucursal2.xml");
+     public void trabajarComoCoordinador(String archivo) 
+     {        
+            File f = new File(archivo);
             if (f.exists() == true) 
             {
-                replicarSucursales("sucursal2.xml");
-                
-                prueba = false;
+                replicarSucursales(archivo);
             }    
             else
                 {
                     System.out.println("no existe");
-                    prueba = false;
                 }      
-         }
+         
          System.out.println("ahora voy a borrar");
 //         try
 //         {

@@ -5,7 +5,9 @@
 package sucursalapp;
 
 import ventanas.LoginSucursal;
-import sockets.Servidor;
+import sockets.*;
+
+
 
 /**
  *
@@ -14,6 +16,7 @@ import sockets.Servidor;
 public class SucursalApp {
 
     public static String coordinador = "no";
+    public static boolean sinConexion = false;
     /**
      * @param args the command line arguments
      */
