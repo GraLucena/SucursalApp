@@ -24,6 +24,7 @@ public class Servidor implements Runnable {
     }
 
     @Override
+
     public void run() {
         this.recibir();
     }
@@ -44,8 +45,8 @@ public class Servidor implements Runnable {
             while (prueba) {
 
                 socketServicio = servicio.accept();
-
                 DataInputStream in = new DataInputStream(socketServicio.getInputStream());
+
                 String estado = in.readUTF();
                 
                 if (estado.equals("Estoy arriba")) {
@@ -87,7 +88,7 @@ public class Servidor implements Runnable {
             servicio.close();
             System.out.println("Me apague");
         } catch (IOException ex) {
-            System.out.println("Algo se daño:");
+            System.out.println("Algo se da√±o:");
             ex.printStackTrace();
         }
     }
