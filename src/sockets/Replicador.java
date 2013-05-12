@@ -20,7 +20,7 @@ public class Replicador implements Runnable {
     private Socket cliente;
     private int puerto;
     private String ip;
-    private String nombreArchivo;
+    private String nombreArchivo;    
 
 //    public Replicador(String nombreArchivo) {
 //        XMLNodoCoordinador nodoCoord = new XMLNodoCoordinador();
@@ -36,18 +36,17 @@ public class Replicador implements Runnable {
     }
 
     @Override
-    public void run() {
-        if (!this.nombreArchivo.equals("Estoy arriba")) {
-            this.enviarXML();
-        } else {
-            this.enviarSignal();
-        }
+   public void run() {
+       if (!this.nombreArchivo.equals("Estoy arriba")) {
+           this.enviarXML();
+       } else {
+           this.enviarSignal();
+       }
 
-    }
+   }
 
     public void enviarXML() {
         try {
-
             this.cliente = new Socket(this.ip, this.puerto);
 
             // enviar archivo  
