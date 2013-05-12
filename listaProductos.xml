@@ -1,7 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <root>
   <producto>
     <nombre>Harina</nombre>
-    <descripcion>Harina Juana</descripcion>
+    <descripcion>Harina Pan</descripcion>
     <costo>20</costo>
     <status>Activo</status>
   </producto>
@@ -36,9 +37,34 @@
     <status>Inactivo</status>
   </producto>
   <producto>
-    <nombre>Patillas</nombre>
-    <descripcion>Patillas</descripcion>
-    <costo>18</costo>
+    <nombre>Lechuga</nombre>
+    <descripcion>Lechuga fresa</descripcion>
+    <costo>12</costo>
+    <status>Activo</status>
+  </producto>
+  <producto>
+    <nombre>repollo</nombre>
+    <descripcion>rchicken</descripcion>
+    <costo>123</costo>
+    <status>Activo</status>
+  </producto>
+  <producto>
+    <nombre>hola</nombre>
+    <descripcion>hola</descripcion>
+    <costo>12</costo>
+    <status>Activo</status>
+  </producto>
+  <producto>
+    <nombre>g</nombre>
+    <descripcion>hjhj</descripcion>
+    <costo>hvj</costo>
+    <status>Activo</status>
+  </producto>
+  <producto>
+    <nombre>jh</nombre>
+    <descripcion>uhbuj</descripcion>
+    <costo>uig</costo>
     <status>Activo</status>
   </producto>
 </root>
+
