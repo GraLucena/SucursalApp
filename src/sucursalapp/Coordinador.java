@@ -166,7 +166,7 @@ public class Coordinador {
          System.out.println("estoy validando el envio" + validarEnvio(sucursal[0],ipSucursal));
          if(validarEnvio(sucursal[0],ipSucursal) == true)
          {
-            Replicador replicador = new Replicador(xmlsucursal, ipSucursal);
+            Replicador replicador = new Replicador(xmlsucursal, ipSucursal, "10000");
             new Thread(replicador).start();       
          }
          else
