@@ -27,7 +27,7 @@
   <producto>
     <nombre>Cafe</nombre>
     <descripcion>Cafe Fama de America</descripcion>
-    <costo>12</costo>
+    <costo>30</costo>
     <imagen>cafe.jpg</imagen>
   </producto>
 </root>

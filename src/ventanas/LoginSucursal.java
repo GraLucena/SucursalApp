@@ -130,6 +130,9 @@ public class LoginSucursal extends javax.swing.JFrame {
                 Sucursal sucursal = new Sucursal();
                 validarCoordinador.buscarCoordinador(this.jTnombre.getText());
                 
+                if(!validarCoordinador.buscarCoordinador(this.jTnombre.getText()))
+                    sucursal.trabajarComoSucursal();
+                
                 MenuSucursal menu = new MenuSucursal(this.jTnombre.getText());
                 menu.setVisible(true);
             }

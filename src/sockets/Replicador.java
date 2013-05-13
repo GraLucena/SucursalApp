@@ -10,6 +10,8 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.net.ConnectException;
 import java.net.Socket;
+import sucursalapp.Historial;
+import sucursalapp.SucursalApp;
 
 /**
  *
@@ -33,11 +35,11 @@ public class Replicador implements Runnable {
         this.puerto = Integer.parseInt(puerto);
         this.ip = ip;
         this.nombreArchivo = nombreArchivo;
+        
     }
 
     @Override
    public void run() {
-        System.out.println(nombreArchivo+"asdf");
        if (!this.nombreArchivo.equals("Estoy arriba")) {
            this.enviarXML();
        } else {
@@ -73,8 +75,8 @@ public class Replicador implements Runnable {
 
         } catch (ConnectException ce) {
             System.out.println("No se encuentra el HOST");
-//            SucursalApp.sinConexion = true;
-//            new Historial().escribirHistorial(nombreArchivo);
+            SucursalApp.sinConexion = true;
+            new Historial().escribirHistorial(nombreArchivo);
 
         } catch (FileNotFoundException nf) {
             System.out.println("No se ha encontrado el archivo");

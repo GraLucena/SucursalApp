@@ -56,7 +56,9 @@ public class Servidor implements Runnable {
 
                 //Estoy recibiedo el mensaje desde Franquicia que esta arriba de nuevo.
                 if (estado.equals("Estoy arriba")) {
+                    
                     if (SucursalApp.sinConexion) {
+                        System.out.println("esta arriba");
                         ArrayList<String> archivos = new Historial().leerHistorial();
                         //replico cada archivo que esta pendiente
                         for (int i = 0; i < archivos.size(); i++) {
