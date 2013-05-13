@@ -63,11 +63,7 @@ public class GestionInventario extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(gestor);
 
-<<<<<<< HEAD
         jScrollPane1.setBounds(50, 110, 452, 140);
-=======
-        jScrollPane1.setBounds(20, 110, 560, 160);
->>>>>>> ventanas
         jLayeredPane1.add(jScrollPane1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jBActualizar.setFont(new java.awt.Font("Lucida Grande", 1, 11)); // NOI18N
@@ -78,7 +74,7 @@ public class GestionInventario extends javax.swing.JFrame {
                 jBActualizarActionPerformed(evt);
             }
         });
-        jBActualizar.setBounds(210, 280, 170, 60);
+        jBActualizar.setBounds(210, 270, 170, 60);
         jLayeredPane1.add(jBActualizar, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/carrinho supermercado.png"))); // NOI18N
@@ -87,7 +83,7 @@ public class GestionInventario extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
         jLabel2.setText("Inventario SuperMercados XYZ");
-        jLabel2.setBounds(50, 60, 285, 22);
+        jLabel2.setBounds(50, 60, 270, 24);
         jLayeredPane1.add(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondos-verdes.jpg"))); // NOI18N
