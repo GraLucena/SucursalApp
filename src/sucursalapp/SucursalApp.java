@@ -16,14 +16,21 @@ public class SucursalApp {
 
     public static String coordinador = "no";
     public static boolean sinConexion = false;
+    public static String nombresucursal = "";
+    public static String puertoEnvio = "";
+    public static String puertoIp = "";
+    
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        puertoEnvio = args[1];
+        puertoIp = args[2];
+        
         LoginSucursal menu = new LoginSucursal();
         menu.setVisible(true);
 
-        Servidor servidor = new Servidor(args[0]);
+        Servidor servidor = new Servidor(args[0], args[1], args[2]);
         new Thread(servidor).start();
         
         Replicador replicador = new Replicador("Estoy arriba", args[1], args[2]);

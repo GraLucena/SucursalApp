@@ -10,6 +10,8 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.net.ConnectException;
 import java.net.Socket;
+import sucursalapp.Historial;
+import sucursalapp.SucursalApp;
 
 /**
  *
@@ -20,7 +22,7 @@ public class Replicador implements Runnable {
     private Socket cliente;
     private int puerto;
     private String ip;
-    private String nombreArchivo;    
+    private String nombreArchivo;
 
 //    public Replicador(String nombreArchivo) {
 //        XMLNodoCoordinador nodoCoord = new XMLNodoCoordinador();
@@ -36,14 +38,14 @@ public class Replicador implements Runnable {
     }
 
     @Override
-   public void run() {
-       if (!this.nombreArchivo.equals("Estoy arriba")) {
-           this.enviarXML();
-       } else {
-           this.enviarSignal();
-       }
+    public void run() {
+        if (!this.nombreArchivo.equals("Estoy arriba")) {
+            this.enviarXML();
+        } else {
+            this.enviarSignal();
+        }
 
-   }
+    }
 
     public void enviarXML() {
         try {
@@ -70,9 +72,11 @@ public class Replicador implements Runnable {
             this.cliente.close();
 
         } catch (ConnectException ce) {
-            System.out.println("No se encuentra el HOST");
-//            SucursalApp.sinConexion = true;
-//            new Historial().escribirHistorial(nombreArchivo);
+            if (!nombreArchivo.equals("Estoy arriba")) {
+                System.out.println("No se encuentra el HOST");
+                SucursalApp.sinConexion = true;
+                new Historial().escribirHistorial(nombreArchivo);
+            }
 
         } catch (FileNotFoundException nf) {
             System.out.println("No se ha encontrado el archivo");
@@ -98,9 +102,6 @@ public class Replicador implements Runnable {
 
         } catch (ConnectException ce) {
             System.out.println("No se encuentra el HOST");
-//            SucursalApp.sinConexion = true;
-//            new Historial().escribirHistorial(nombreArchivo);
-
         } catch (IOException io) {
             io.printStackTrace();
         }
