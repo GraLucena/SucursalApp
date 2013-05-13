@@ -21,6 +21,7 @@ public class Servidor implements Runnable {
     private String puertoEscucha;
     private String puetoEnvio;
     private String ipEnvio;
+    private String ipsucursal = "192.168.1.22";
 
     public Servidor(String puertoEscucha, String puertoEnvio, String ipEnvio) {
         this.puertoEscucha = puertoEscucha;
@@ -62,7 +63,21 @@ public class Servidor implements Runnable {
                         ArrayList<String> archivos = new Historial().leerHistorial();
                         //replico cada archivo que esta pendiente
                         for (int i = 0; i < archivos.size(); i++) {
-                            new Thread(new Replicador(archivos.get(i), this.puetoEnvio, this.ipEnvio)).start();
+                            if(sender.equals("sucursal"))
+                            {
+                                System.out.println("hola 1");
+                                System.out.println(this.ipEnvio);
+                                System.out.println(this.puetoEnvio);
+                                System.out.println(ipsucursal);
+                                new Thread(new Replicador(archivos.get(i), "10000", ipsucursal)).start();
+                                
+                            }
+                            else{
+                                System.out.println("hola 2");
+                                System.out.println(this.ipEnvio);
+                                System.out.println(this.puetoEnvio);
+                                System.out.println(ipsucursal);
+                                new Thread(new Replicador(archivos.get(i), this.puetoEnvio, this.ipEnvio)).start();}
                         }
                         SucursalApp.sinConexion = false;
                     }
@@ -78,7 +93,6 @@ public class Servidor implements Runnable {
                         byte[] buffer = new byte[1024];
                         while (size > 0 && (bytesRead = in.read(buffer, 0, (int) Math.min(buffer.length, size))) != -1) {
                             output.write(buffer, 0, bytesRead);
-
                             size -= bytesRead;
                         }
                         if (sucursalapp.SucursalApp.coordinador.equals("si")) {

@@ -122,7 +122,7 @@ public class GestionInventario extends javax.swing.JFrame {
             } else {
                 XMLNodoCoordinador nodoCoord = new XMLNodoCoordinador();
                 Nodo coordinador = nodoCoord.getCoordinador();
-                Replicador replicador = new Replicador(SucursalApp.nombresucursal + ".xml", "10000", coordinador.getIp());
+                Replicador replicador = new Replicador(SucursalApp.nombresucursal+".xml", "10000", coordinador.getIp());
                 new Thread(replicador).start();
             }
         } else {

@@ -124,7 +124,7 @@ public class LoginSucursal extends javax.swing.JFrame {
                 ArrayList<String> ips = new XMLSucursal().buscarIpsSucursales("registroSucursales.xml");
                 for (int j = 0; j < ips.size(); j++) {
                     System.out.println(ips.get(j));
-                    new Thread(new Replicador("Estoy arriba", SucursalApp.puertoEnvio, ips.get(j))).start();
+                    new Thread(new Replicador("Estoy arriba", "10000", ips.get(j))).start();
 
                 }
 

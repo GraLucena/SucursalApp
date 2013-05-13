@@ -97,6 +97,7 @@ public class Replicador implements Runnable {
 
             DataOutputStream dos = new DataOutputStream(os);
             dos.writeUTF("Estoy arriba");
+            dos.writeUTF("sucursal");
             dos.flush();
 
             this.cliente.close();
