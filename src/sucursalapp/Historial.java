@@ -24,18 +24,22 @@ public class Historial {
     }
 
     public void escribirHistorial(String nombreArchivo) {
-        File f;
         boolean existe;
-
+        
+        if (!new File("historial.txt").exists()) {
+            System.out.println("no estoy creado!!");
+           File f = new File("historial.txt");
+           try {
+               f.createNewFile();
+           } catch (IOException ex) {
+               Logger.getLogger(Historial.class.getName()).log(Level.SEVERE, null, ex);
+           }
+           existe = false;
+       } else {
+           existe = true;
+       }
+        
         if (!existeAccion(nombreArchivo)) {
-
-            if (!new File("historial.txt").exists()) {
-                f = new File("historial.txt");
-                existe = false;
-            } else {
-                existe = true;
-            }
-
             try {
 
                 FileWriter w = new FileWriter("historial.txt", existe);

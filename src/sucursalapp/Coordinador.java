@@ -152,10 +152,14 @@ public class Coordinador {
         System.out.println(ipSucursal);
         System.out.println("estoy validando el envio" + validarEnvio(sucursal[0], ipSucursal));
         if (validarEnvio(sucursal[0], ipSucursal) && !SucursalApp.nombresucursal.equals(sucursal[0])) {
-            if (sender.equals("sucursal")) {                
+
+            if (sender.equals("sucursal")) {
+                System.out.println("franquicia");
                 Replicador replicador = new Replicador(xmlsucursal, SucursalApp.puertoEnvio, SucursalApp.puertoIp);
                 new Thread(replicador).start();
+                
             } else {
+                System.out.println("sucursal");
                 Replicador replicador = new Replicador(xmlsucursal, "10000", ipSucursal);
                 new Thread(replicador).start();
             }

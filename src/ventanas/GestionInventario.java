@@ -63,7 +63,7 @@ public class GestionInventario extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(gestor);
 
-        jScrollPane1.setBounds(90, 120, 420, 130);
+        jScrollPane1.setBounds(50, 110, 452, 140);
         jLayeredPane1.add(jScrollPane1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jBActualizar.setFont(new java.awt.Font("Lucida Grande", 1, 11)); // NOI18N
@@ -112,6 +112,7 @@ public class GestionInventario extends javax.swing.JFrame {
         int selectedRow = this.gestor.getSelectedRow();
         if (selectedRow != -1) {
             String producto = (String) this.gestor.getModel().getValueAt(selectedRow, 0);
+
             String cantidad = (String) this.gestor.getModel().getValueAt(selectedRow, 3);
             System.out.println(SucursalApp.nombresucursal);
             XMLInventario xml = new XMLInventario(SucursalApp.nombresucursal);
@@ -121,10 +122,9 @@ public class GestionInventario extends javax.swing.JFrame {
             } else {
                 XMLNodoCoordinador nodoCoord = new XMLNodoCoordinador();
                 Nodo coordinador = nodoCoord.getCoordinador();
-                Replicador replicador = new Replicador(SucursalApp.nombresucursal + ".xml", "10000", coordinador.getIp());
+                Replicador replicador = new Replicador(SucursalApp.nombresucursal+".xml", "10000", coordinador.getIp());
                 new Thread(replicador).start();
             }
-
         } else {
             JOptionPane.showMessageDialog(null, "No ha seleccionado ningun producto", "ERROR", JOptionPane.ERROR_MESSAGE);
         }

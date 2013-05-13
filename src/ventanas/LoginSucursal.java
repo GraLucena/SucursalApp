@@ -131,7 +131,6 @@ public class LoginSucursal extends javax.swing.JFrame {
                     new Thread(new Replicador("Estoy arriba", SucursalApp.puertoEnvio, SucursalApp.puertoIp)).start();
                 }
 
-
             } catch (IOException ex) {
                 System.out.println("no obtuve el ip");
             }
