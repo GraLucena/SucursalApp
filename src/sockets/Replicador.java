@@ -65,6 +65,7 @@ public class Replicador implements Runnable {
 
             DataOutputStream dos = new DataOutputStream(os);
             dos.writeUTF(myFile.getName());
+            dos.writeUTF("sucursal");
             dos.writeLong(mybytearray.length);
             dos.write(mybytearray, 0, mybytearray.length);
             dos.flush();

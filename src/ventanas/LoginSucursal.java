@@ -2,10 +2,11 @@ package ventanas;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.*;
+import sockets.Replicador;
 import sucursalapp.*;
-
 
 /**
  * Menú principal de la franquicia.
@@ -107,34 +108,41 @@ public class LoginSucursal extends javax.swing.JFrame {
     }//GEN-LAST:event_jTnombreActionPerformed
 
     private void jBloginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBloginActionPerformed
-            XMLSucursal sucursales = new XMLSucursal();
-           SucursalApp.nombresucursal =  this.jTnombre.getText(); 
-            if(sucursales.comprobarUsuarios(this.jTnombre.getText(), this.jPassword.getText())!=false)
-            {
-                try
-                {
-                    java.net.InetAddress i = java.net.InetAddress.getLocalHost();
-                    //System.out.println(i.getHostAddress());
-                    XMLInventario actualizarXml = new XMLInventario(SucursalApp.nombresucursal);
-                    actualizarXml.actualizarIpSucursales(this.jTnombre.getText(), i.getHostAddress());
-                    
+        XMLSucursal sucursales = new XMLSucursal();
+        SucursalApp.nombresucursal = this.jTnombre.getText();
+        if (sucursales.comprobarUsuarios(this.jTnombre.getText(), this.jPassword.getText()) != false) {
+            try {
+                java.net.InetAddress i = java.net.InetAddress.getLocalHost();
+                //System.out.println(i.getHostAddress());
+                XMLInventario actualizarXml = new XMLInventario(SucursalApp.nombresucursal);
+                actualizarXml.actualizarIpSucursales(this.jTnombre.getText(), i.getHostAddress());
+
+
+                Replicador replicador = new Replicador("Estoy arriba", SucursalApp.puertoEnvio, SucursalApp.puertoIp);
+                new Thread(replicador).start();
+
+                ArrayList<String> ips = new XMLSucursal().buscarIpsSucursales("registroSucursales.xml");
+                for (int j = 0; j < ips.size(); j++) {
+                    System.out.println(ips.get(j));
+                    new Thread(new Replicador("Estoy arriba", SucursalApp.puertoEnvio, ips.get(j))).start();
+
                 }
-                catch (IOException ex) 
-                {
-                    System.out.println("no obtuve el ip");
-                }
-                
-                
-                
-                Coordinador validarCoordinador = new Coordinador();
-                Sucursal sucursal = new Sucursal();
-                validarCoordinador.buscarCoordinador(this.jTnombre.getText());
-                
-                MenuSucursal menu = new MenuSucursal(this.jTnombre.getText());
-                menu.setVisible(true);
+
+            } catch (IOException ex) {
+                System.out.println("no obtuve el ip");
             }
-            else
+
+
+
+            Coordinador validarCoordinador = new Coordinador();
+            Sucursal sucursal = new Sucursal();
+            validarCoordinador.buscarCoordinador(this.jTnombre.getText());
+
+            MenuSucursal menu = new MenuSucursal(this.jTnombre.getText());
+            menu.setVisible(true);
+        } else {
             JOptionPane.showMessageDialog(null, "Usuario o Contraseña incorrecta", "ERROR", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_jBloginActionPerformed
 
     /**

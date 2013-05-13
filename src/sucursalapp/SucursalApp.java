@@ -32,7 +32,5 @@ public class SucursalApp {
         Servidor servidor = new Servidor(args[0], args[1], args[2]);
         new Thread(servidor).start();
         
-        Replicador replicador = new Replicador("Estoy arriba", args[1], args[2]);
-        new Thread(replicador).start();
     }
 }
