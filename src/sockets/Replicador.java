@@ -37,6 +37,7 @@ public class Replicador implements Runnable {
 
     @Override
    public void run() {
+        System.out.println(nombreArchivo+"asdf");
        if (!this.nombreArchivo.equals("Estoy arriba")) {
            this.enviarXML();
        } else {
@@ -46,6 +47,7 @@ public class Replicador implements Runnable {
    }
 
     public void enviarXML() {
+        System.out.println("enviar xml");
         try {
             this.cliente = new Socket(this.ip, this.puerto);
 

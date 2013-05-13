@@ -164,9 +164,9 @@ public class Coordinador {
          String ipSucursal = buscarSucursal(sucursal[0]);
          System.out.println(ipSucursal);
          System.out.println("estoy validando el envio" + validarEnvio(sucursal[0],ipSucursal));
-         if(validarEnvio(sucursal[0],ipSucursal) == true)
+         if(validarEnvio(sucursal[0],ipSucursal) && !SucursalApp.nombresucursal.equals(sucursal[0]))
          {
-            Replicador replicador = new Replicador(xmlsucursal, ipSucursal, "10000");
+            Replicador replicador = new Replicador(xmlsucursal, "10000", ipSucursal);
             new Thread(replicador).start();       
          }
          else

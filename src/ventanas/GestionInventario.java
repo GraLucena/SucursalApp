@@ -5,8 +5,10 @@
 package ventanas;
 
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import sucursalapp.XMLInventario;
+import sockets.Replicador;
+import sucursalapp.*;
 
 /**
  * Clase que permite la visualizacion de los inventarios
@@ -22,13 +24,14 @@ public class GestionInventario extends javax.swing.JFrame {
     int selected = -1;
     private String archivo = "inventarioProductos.xml";
     private String producto;
+    private String sucursal;
 
     /**
      * Creates new form GestionInventario
      */
     public GestionInventario() {
         initComponents();
-        XMLInventario xml = new XMLInventario();
+        XMLInventario xml = new XMLInventario(sucursal);
         xml.listarInventario(this, archivo);
     }
 
@@ -41,9 +44,9 @@ public class GestionInventario extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLayeredPane1 = new javax.swing.JLayeredPane();
         jScrollPane1 = new javax.swing.JScrollPane();
         gestor = new javax.swing.JTable();
+        jLayeredPane1 = new javax.swing.JLayeredPane();
         jBActualizar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -56,23 +59,10 @@ public class GestionInventario extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Nombre", "Costo", "Cantidad"
+                "Nombre", "Descripcion", "Costo", "Cantidad", "Estado", "Imagen"
             }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, true
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        gestor.setColumnSelectionAllowed(true);
+        ));
         jScrollPane1.setViewportView(gestor);
-        gestor.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-
-        jScrollPane1.setBounds(50, 100, 490, 150);
-        jLayeredPane1.add(jScrollPane1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jBActualizar.setFont(new java.awt.Font("Lucida Grande", 1, 11)); // NOI18N
         jBActualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/edit.png"))); // NOI18N
@@ -105,19 +95,40 @@ public class GestionInventario extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 593, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 51, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 490, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 52, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 110, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 110, Short.MAX_VALUE)))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBActualizarActionPerformed
-        
+    int selectedRow = this.gestor.getSelectedRow();
+        if (selectedRow != -1) {
+            String producto = (String) this.gestor.getModel().getValueAt(selectedRow, 0);
+             String cantidad = (String) this.gestor.getModel().getValueAt(selectedRow, 3);
+             System.out.println(SucursalApp.nombresucursal);
+             XMLInventario xml = new XMLInventario(SucursalApp.nombresucursal);
+             xml.actualizarInventario(SucursalApp.nombresucursal, producto,cantidad);
+             
+        } else {
+            JOptionPane.showMessageDialog(null, "No ha seleccionado ningun producto", "ERROR", JOptionPane.ERROR_MESSAGE);
+        }
+                       
     }//GEN-LAST:event_jBActualizarActionPerformed
 
     /**
@@ -155,17 +166,8 @@ public class GestionInventario extends javax.swing.JFrame {
         });
     }
     
-    /**
-     * Carga la tabla con los productos disponibles
-     *
-     * @param nombre
-     * @param descripcion
-     * @param foto
-     * @param cantidad
-     */
-    public void agregarfila(String nombre, String ubicacion, String telefono) {
-        ((DefaultTableModel) this.gestor.getModel()).addRow(new Object[]{nombre, ubicacion, telefono});
-
+public void agregarfila(String nombre, String descripcion, String costo, String cantidad, String status, String imagen) {
+        ((DefaultTableModel) this.gestor.getModel()).addRow(new Object[]{nombre, descripcion, costo, cantidad, status, imagen});
     }
 
     public ArrayList<String> getInventario() {
@@ -176,6 +178,18 @@ public class GestionInventario extends javax.swing.JFrame {
         return inventario;
     }
 
+    public Inventario getProductoInventarioSeleccionado() {
+        int selectedRow = this.gestor.getSelectedRow();
+        String productoNombre = (String) this.gestor.getModel().getValueAt(selectedRow, 0);
+        String productoDesc = (String) this.gestor.getModel().getValueAt(selectedRow, 1);
+        String productoCosto = (String) this.gestor.getModel().getValueAt(selectedRow, 2);
+        String productoCantidad = (String) this.gestor.getModel().getValueAt(selectedRow, 3);
+        //String productoStatus = (String) this.gestor.getModel().getValueAt(selectedRow, 4);
+         
+        Inventario inven = new Inventario(productoNombre, productoDesc, productoCosto, productoCantidad);
+        return inven;
+    }
+    
     public int getRowCount() {
         return gestor.getRowCount();
     }
@@ -183,11 +197,8 @@ public class GestionInventario extends javax.swing.JFrame {
     private void gestorMouseClicked(java.awt.event.MouseEvent evt) {
         this.selected = gestor.getSelectedRow();
         System.out.print(selected);
-
-
-        // TODO add your handling code here:
-        // TODO add your handling code here:
     }
+        
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable gestor;
     private javax.swing.JButton jBActualizar;

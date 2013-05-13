@@ -3,68 +3,32 @@
   <producto>
     <nombre>Harina</nombre>
     <descripcion>Harina Pan</descripcion>
-    <costo>20</costo>
-    <status>Activo</status>
+    <costo>200</costo>
+    <imagen>harina.jpg</imagen>
   </producto>
   <producto>
     <nombre>Azucar</nombre>
     <descripcion>Azucar Morena</descripcion>
     <costo>25</costo>
-    <status>Activo</status>
+    <imagen>azucar.jpg</imagen>
   </producto>
   <producto>
     <nombre>Cebolla</nombre>
     <descripcion>Cebolla</descripcion>
     <costo>100</costo>
-    <status>Inactivo</status>
-  </producto>
-  <producto>
-    <nombre>Pan</nombre>
-    <descripcion>Pan</descripcion>
-    <costo>100</costo>
-    <status>Activo</status>
+    <imagen>cebolla.jpg</imagen>
   </producto>
   <producto>
     <nombre>Caraotas</nombre>
     <descripcion>Caraotas</descripcion>
     <costo>100</costo>
-    <status>Activo</status>
+    <imagen>caraotas.jpg</imagen>
   </producto>
   <producto>
-    <nombre>Naranja</nombre>
-    <descripcion>Naranja</descripcion>
-    <costo>20</costo>
-    <status>Inactivo</status>
-  </producto>
-  <producto>
-    <nombre>Lechuga</nombre>
-    <descripcion>Lechuga fresa</descripcion>
+    <nombre>Cafe</nombre>
+    <descripcion>Cafe Fama de America</descripcion>
     <costo>12</costo>
-    <status>Activo</status>
-  </producto>
-  <producto>
-    <nombre>repollo</nombre>
-    <descripcion>rchicken</descripcion>
-    <costo>123</costo>
-    <status>Activo</status>
-  </producto>
-  <producto>
-    <nombre>hola</nombre>
-    <descripcion>hola</descripcion>
-    <costo>12</costo>
-    <status>Activo</status>
-  </producto>
-  <producto>
-    <nombre>g</nombre>
-    <descripcion>hjhj</descripcion>
-    <costo>hvj</costo>
-    <status>Activo</status>
-  </producto>
-  <producto>
-    <nombre>jh</nombre>
-    <descripcion>uhbuj</descripcion>
-    <costo>uig</costo>
-    <status>Activo</status>
+    <imagen>cafe.jpg</imagen>
   </producto>
 </root>
 
