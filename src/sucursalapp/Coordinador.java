@@ -141,21 +141,23 @@ public class Coordinador {
         }
         //return Varchivo;
     }
-    
-    public void replicarSucursales(String xmlsucursal) {
-        System.out.println(xmlsucursal);
-        String[] sucursal;
-        String spliter = "\\.";
-        sucursal = xmlsucursal.split(spliter);
-        System.out.println(sucursal[0]);
-        String ipSucursal = buscarSucursal(sucursal[0]);
-        System.out.println(ipSucursal);
-        System.out.println("estoy validando el envio" + validarEnvio(sucursal[0], ipSucursal));
-        if (validarEnvio(sucursal[0], ipSucursal) && !SucursalApp.nombresucursal.equals(sucursal[0])) {
+     
+     public void replicarSucursales(String xmlsucursal)
+     {
+         System.out.println(xmlsucursal);
+         String[] sucursal;
+         String spliter = "\\.";
+         sucursal = xmlsucursal.split(spliter);
+         System.out.println(sucursal[0]);
+         String ipSucursal = buscarSucursal(sucursal[0]);
+         System.out.println(ipSucursal);
+         System.out.println("estoy validando el envio" + validarEnvio(sucursal[0],ipSucursal));
+         if(validarEnvio(sucursal[0],ipSucursal) && !SucursalApp.nombresucursal.equals(sucursal[0]))
+         {
             Replicador replicador = new Replicador(xmlsucursal, "10000", ipSucursal);
-            new Thread(replicador).start();            
-        } else {
-            System.out.println("mal envio");
-        }
-    }
+            new Thread(replicador).start();       
+         }
+         else
+             System.out.println("mal envio");
+     }
 }

@@ -100,13 +100,13 @@ public class MenuSucursal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBProductosActionPerformed
-        //GestionProducto productos = new GestionProducto();
+        GestionProducto productos = new GestionProducto();
         //this.dispose();
-        //productos.setVisible(true);
+        productos.setVisible(true);
     }//GEN-LAST:event_jBProductosActionPerformed
 
     private void jBSucursalesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSucursalesActionPerformed
-//        GestionSucursal sucursales = new GestionSucursal();
+        GestionInventario inventario = new GestionInventario();
 //        XMLInventario inventario = new XMLInventario();
 //        File f = new File("inventarioProductos.xml");
 //        if (f.exists() == true) 
@@ -115,7 +115,7 @@ public class MenuSucursal extends javax.swing.JFrame {
 //              inventario.CrearInventario();   
 //        
 //        //this.dispose();
-//        sucursales.setVisible(true);
+        inventario.setVisible(true);
     }//GEN-LAST:event_jBSucursalesActionPerformed
 
     /**

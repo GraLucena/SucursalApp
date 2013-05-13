@@ -22,7 +22,7 @@ public void CrearInventario()
 {
     int cont = 0;
     SAXBuilder builder = new SAXBuilder();
-    XMLInventario inventario = new XMLInventario();
+    //XMLInventario inventario = new XMLInventario();
     File xmlFile = new File("listaProductos.xml");
     
     try {
@@ -45,11 +45,11 @@ public void CrearInventario()
                     
                     if(node.getChildText("status").equals("Activo") == true)
                     {
-                        if(cont == 1)
-                         inventario.agregarProductoInventario(node.getChildText("nombre"), node.getChildText("descripcion"), node.getChildText("costo"));
-                        else
+                        if(cont == 1){
+                         //inventario.agregarProductoInventario(node.getChildText("nombre"), node.getChildText("descripcion"), node.getChildText("costo"));
+                        }else
                         {
-                         inventario.crearProductoInventario(node.getChildText("nombre"), node.getChildText("descripcion"), node.getChildText("costo"));
+                         //inventario.crearProductoInventario(node.getChildText("nombre"), node.getChildText("descripcion"), node.getChildText("costo"));
                          cont = 1;
                         } 
                          

@@ -44,10 +44,10 @@ public class Replicador implements Runnable {
         } else {
             this.enviarSignal();
         }
-
     }
 
     public void enviarXML() {
+        System.out.println("enviar xml");
         try {
             this.cliente = new Socket(this.ip, this.puerto);
 

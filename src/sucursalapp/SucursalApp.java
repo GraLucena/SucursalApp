@@ -15,11 +15,10 @@ import sockets.Servidor;
 public class SucursalApp {
 
     public static String coordinador = "no";
-    public static boolean sinConexion = false;
     public static String nombresucursal = "";
+    public static boolean sinConexion = false;
     public static String puertoEnvio = "";
     public static String puertoIp = "";
-    
     /**
      * @param args the command line arguments
      */
