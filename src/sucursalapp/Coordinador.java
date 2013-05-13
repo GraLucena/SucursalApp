@@ -16,30 +16,29 @@ import org.jdom.Element;
 import org.jdom.JDOMException;
 import org.jdom.input.SAXBuilder;
 import sockets.*;
+
 /**
  *
  * @author Diego Alienware
  */
 public class Coordinador {
-    
+
     private Element root;
-    
-    public void validarCoordinador(String sucursal)
-    {
+
+    public void validarCoordinador(String sucursal) {
         boolean esCoordinador = buscarCoordinador(sucursal);
     }
-    
-    
+
     /**
      * Permite la busqueda del coordinador en el xml de coordinador
      *
      * @param nombre
      * @return
      */
-     public boolean buscarCoordinador(String nombre) {
+    public boolean buscarCoordinador(String nombre) {
         SAXBuilder builder = new SAXBuilder(false);
         Document doc = null;
-       try {
+        try {
             doc = builder.build("nodoCoordinador.xml");
         } catch (JDOMException ex) {
             Logger.getLogger(Coordinador.class.getName()).log(Level.SEVERE, null, ex);
@@ -49,24 +48,22 @@ public class Coordinador {
         root = doc.getRootElement();
         Element raiz = doc.getRootElement();
         List listaInventario = raiz.getChildren("nodo");
-        for (int i = 0; i < listaInventario.size(); i++) 
-        {
+        for (int i = 0; i < listaInventario.size(); i++) {
             Element node = (Element) listaInventario.get(i);
             //System.out.println("imprimo en buscar: " + producto + " es " + producto.equals(node.getChildText("nombre")));
-            if (nombre.equals(node.getChildText("nombre")) == true)     
-            {
+            if (nombre.equals(node.getChildText("nombre")) == true) {
                 SucursalApp.coordinador = "si";
                 System.out.println("soy coordinador");
                 return true;
             }
-        }   
+        }
         return false;
     }
-     
-     public String buscarSucursal(String nombre) {
+
+    public String buscarSucursal(String nombre) {
         SAXBuilder builder = new SAXBuilder(false);
         Document doc = null;
-       try {
+        try {
             doc = builder.build("registroSucursales.xml");
         } catch (JDOMException ex) {
             Logger.getLogger(Coordinador.class.getName()).log(Level.SEVERE, null, ex);
@@ -76,32 +73,26 @@ public class Coordinador {
         root = doc.getRootElement();
         Element raiz = doc.getRootElement();
         List listaInventario = raiz.getChildren("sucursal");
-        for (int i = 0; i < listaInventario.size(); i++) 
-        {
+        for (int i = 0; i < listaInventario.size(); i++) {
             Element node = (Element) listaInventario.get(i);
             //System.out.println("imprimo en buscar: " + producto + " es " + producto.equals(node.getChildText("nombre")));
-            if (nombre.equals(node.getChildText("login")) == true)     
-            {
+            if (nombre.equals(node.getChildText("login")) == true) {
                 String ip = node.getChildText("ip");
                 return ip;
             }
-        }   
+        }
         return "not found";
     }
-     
-     public void trabajarComoCoordinador(String archivo) 
-     {        
-            File f = new File(archivo);
-            if (f.exists() == true) 
-            {
-                replicarSucursales(archivo);
-            }    
-            else
-                {
-                    System.out.println("no existe");
-                }      
-         
-         System.out.println("ahora voy a borrar");
+
+    public void trabajarComoCoordinador(String archivo, String sender) {
+        File f = new File(archivo);
+        if (f.exists() == true) {
+            replicarSucursales(archivo, sender);
+        } else {
+            System.out.println("no existe");
+        }
+
+        System.out.println("ahora voy a borrar");
 //         try
 //         {
 //    		File file = new File("sucursal2.xml");
@@ -116,11 +107,11 @@ public class Coordinador {
 // 
 //    		e.printStackTrace();
 //         }
-         
-         
-     }
-     
-     public boolean validarEnvio(String username,String ip) {
+
+
+    }
+
+    public boolean validarEnvio(String username, String ip) {
         try {
             //System.out.println(username + " " + contrasena);
             SAXBuilder builder = new SAXBuilder(false);
@@ -128,22 +119,19 @@ public class Coordinador {
             Element raiz = doc.getRootElement();
             List listaarchivos = raiz.getChildren("sucursal");
             Iterator k = listaarchivos.iterator();
-            while (k.hasNext()) 
-            {
+            while (k.hasNext()) {
                 Element e = (Element) k.next();
                 Element login = e.getChild("login");
                 Element xmlip = e.getChild("ip");
-                
-                if (username.equals(login.getText())) 
-                {
-                    if (xmlip.getText().equals(ip))
-                    {
+
+                if (username.equals(login.getText())) {
+                    if (xmlip.getText().equals(ip)) {
                         return true;
                     }
                 }
             }
             return false;
-            
+
         } catch (FileNotFoundException F) {
             System.out.println("Archivo XML no encontrado");
             return false;
@@ -153,26 +141,27 @@ public class Coordinador {
         }
         //return Varchivo;
     }
-     
-     public void replicarSucursales(String xmlsucursal)
-     {
-         System.out.println(xmlsucursal);
-         String[] sucursal;
-         String spliter = "\\.";
-         sucursal = xmlsucursal.split(spliter);
-         System.out.println(sucursal[0]);
-         String ipSucursal = buscarSucursal(sucursal[0]);
-         System.out.println(ipSucursal);
-         System.out.println("estoy validando el envio" + validarEnvio(sucursal[0],ipSucursal));
-         if(validarEnvio(sucursal[0],ipSucursal) && !SucursalApp.nombresucursal.equals(sucursal[0]))
-         {
-            Replicador replicador = new Replicador(xmlsucursal, "10000", ipSucursal);
-            new Thread(replicador).start();       
-         }
-         else
-             System.out.println("mal envio");
-     }
-    
-     
-     
+
+    public void replicarSucursales(String xmlsucursal, String sender) {
+        System.out.println(xmlsucursal);
+        String[] sucursal;
+        String spliter = "\\.";
+        sucursal = xmlsucursal.split(spliter);
+        System.out.println(sucursal[0]);
+        String ipSucursal = buscarSucursal(sucursal[0]);
+        System.out.println(ipSucursal);
+        System.out.println("estoy validando el envio" + validarEnvio(sucursal[0], ipSucursal));
+        if (validarEnvio(sucursal[0], ipSucursal) && !SucursalApp.nombresucursal.equals(sucursal[0])) {
+            if (sender.equals("sucursal")) {
+                Replicador replicador = new Replicador(xmlsucursal, "10000", ipSucursal);
+                new Thread(replicador).start();
+            } else {
+                Replicador replicador = new Replicador(xmlsucursal, SucursalApp.puertoEnvio, SucursalApp.puertoIp);
+                new Thread(replicador).start();
+            }
+
+        } else {
+            System.out.println("mal envio");
+        }
+    }
 }

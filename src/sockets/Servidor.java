@@ -29,7 +29,6 @@ public class Servidor implements Runnable {
     }
 
     @Override
-
     public void run() {
         this.recibir();
     }
@@ -53,6 +52,7 @@ public class Servidor implements Runnable {
                 DataInputStream in = new DataInputStream(socketServicio.getInputStream());
 
                 String estado = in.readUTF();
+                String sender = in.readUTF();
 
                 //Estoy recibiedo el mensaje desde Franquicia que esta arriba de nuevo.
                 if (estado.equals("Estoy arriba")) {
@@ -83,7 +83,7 @@ public class Servidor implements Runnable {
                         }
                         if (sucursalapp.SucursalApp.coordinador.equals("si")) {
                             //System.out.println("estoy en el while");
-                            coordinador.trabajarComoCoordinador(fileName);
+                            coordinador.trabajarComoCoordinador(fileName, sender);
                             //System.out.println("");
 
                         } else {

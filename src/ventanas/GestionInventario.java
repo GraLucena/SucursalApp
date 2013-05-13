@@ -15,9 +15,8 @@ import sucursalapp.*;
  *
  * @author Diego Alienware
  */
-
 public class GestionInventario extends javax.swing.JFrame {
-    
+
     /**
      * Creates new form GestionProducto
      */
@@ -110,29 +109,26 @@ public class GestionInventario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBActualizarActionPerformed
-    int selectedRow = this.gestor.getSelectedRow();
+        int selectedRow = this.gestor.getSelectedRow();
         if (selectedRow != -1) {
             String producto = (String) this.gestor.getModel().getValueAt(selectedRow, 0);
-             String cantidad = (String) this.gestor.getModel().getValueAt(selectedRow, 3);
-             System.out.println(SucursalApp.nombresucursal);
-             XMLInventario xml = new XMLInventario(SucursalApp.nombresucursal);
-             xml.actualizarInventario(SucursalApp.nombresucursal, producto,cantidad);
-             if (SucursalApp.coordinador.equals("si"))
-             {
-             
-             }
-             else
-             {
+
+            String cantidad = (String) this.gestor.getModel().getValueAt(selectedRow, 3);
+            System.out.println(SucursalApp.nombresucursal);
+            XMLInventario xml = new XMLInventario(SucursalApp.nombresucursal);
+            xml.actualizarInventario(SucursalApp.nombresucursal, producto, cantidad);
+
+            if (SucursalApp.coordinador.equals("si")) {
+            } else {
                 XMLNodoCoordinador nodoCoord = new XMLNodoCoordinador();
                 Nodo coordinador = nodoCoord.getCoordinador();
-                Replicador replicador = new Replicador(SucursalApp.nombresucursal+".xml","10000",coordinador.getIp());
+                Replicador replicador = new Replicador(SucursalApp.nombresucursal + ".xml", "10000", coordinador.getIp());
                 new Thread(replicador).start();
-             }
-             
+            }
         } else {
             JOptionPane.showMessageDialog(null, "No ha seleccionado ningun producto", "ERROR", JOptionPane.ERROR_MESSAGE);
         }
-                       
+
     }//GEN-LAST:event_jBActualizarActionPerformed
 
     /**
@@ -169,8 +165,8 @@ public class GestionInventario extends javax.swing.JFrame {
             }
         });
     }
-    
-public void agregarfila(String nombre, String descripcion, String costo, String cantidad, String status, String imagen) {
+
+    public void agregarfila(String nombre, String descripcion, String costo, String cantidad, String status, String imagen) {
         ((DefaultTableModel) this.gestor.getModel()).addRow(new Object[]{nombre, descripcion, costo, cantidad, status, imagen});
     }
 
@@ -189,11 +185,11 @@ public void agregarfila(String nombre, String descripcion, String costo, String 
         String productoCosto = (String) this.gestor.getModel().getValueAt(selectedRow, 2);
         String productoCantidad = (String) this.gestor.getModel().getValueAt(selectedRow, 3);
         //String productoStatus = (String) this.gestor.getModel().getValueAt(selectedRow, 4);
-         
+
         Inventario inven = new Inventario(productoNombre, productoDesc, productoCosto, productoCantidad);
         return inven;
     }
-    
+
     public int getRowCount() {
         return gestor.getRowCount();
     }
@@ -202,7 +198,6 @@ public void agregarfila(String nombre, String descripcion, String costo, String 
         this.selected = gestor.getSelectedRow();
         System.out.print(selected);
     }
-        
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable gestor;
     private javax.swing.JButton jBActualizar;

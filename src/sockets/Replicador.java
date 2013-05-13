@@ -22,7 +22,7 @@ public class Replicador implements Runnable {
     private Socket cliente;
     private int puerto;
     private String ip;
-    private String nombreArchivo;    
+    private String nombreArchivo;
 
 //    public Replicador(String nombreArchivo) {
 //        XMLNodoCoordinador nodoCoord = new XMLNodoCoordinador();
@@ -35,18 +35,16 @@ public class Replicador implements Runnable {
         this.puerto = Integer.parseInt(puerto);
         this.ip = ip;
         this.nombreArchivo = nombreArchivo;
-        
     }
 
     @Override
-   public void run() {
-       if (!this.nombreArchivo.equals("Estoy arriba")) {
-           this.enviarXML();
-       } else {
-           this.enviarSignal();
-       }
-
-   }
+    public void run() {
+        if (!this.nombreArchivo.equals("Estoy arriba")) {
+            this.enviarXML();
+        } else {
+            this.enviarSignal();
+        }
+    }
 
     public void enviarXML() {
         System.out.println("enviar xml");
@@ -67,6 +65,7 @@ public class Replicador implements Runnable {
 
             DataOutputStream dos = new DataOutputStream(os);
             dos.writeUTF(myFile.getName());
+            dos.writeUTF("sucursal");
             dos.writeLong(mybytearray.length);
             dos.write(mybytearray, 0, mybytearray.length);
             dos.flush();
@@ -74,9 +73,11 @@ public class Replicador implements Runnable {
             this.cliente.close();
 
         } catch (ConnectException ce) {
-            System.out.println("No se encuentra el HOST");
-            SucursalApp.sinConexion = true;
-            new Historial().escribirHistorial(nombreArchivo);
+            if (!nombreArchivo.equals("Estoy arriba")) {
+                System.out.println("No se encuentra el HOST");
+                SucursalApp.sinConexion = true;
+                new Historial().escribirHistorial(nombreArchivo);
+            }
 
         } catch (FileNotFoundException nf) {
             System.out.println("No se ha encontrado el archivo");
@@ -102,9 +103,6 @@ public class Replicador implements Runnable {
 
         } catch (ConnectException ce) {
             System.out.println("No se encuentra el HOST");
-//            SucursalApp.sinConexion = true;
-//            new Historial().escribirHistorial(nombreArchivo);
-
         } catch (IOException io) {
             io.printStackTrace();
         }
