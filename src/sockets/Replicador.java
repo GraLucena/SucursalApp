@@ -74,7 +74,7 @@ public class Replicador implements Runnable {
 
         } catch (ConnectException ce) {
             if (!nombreArchivo.equals("Estoy arriba")) {
-                System.out.println("No se encuentra el HOST");
+                System.out.println("No se encuentra el HOST" + this.ip + this.puerto);
                 SucursalApp.sinConexion = true;
                 new Historial().escribirHistorial(nombreArchivo);
             }
@@ -97,12 +97,13 @@ public class Replicador implements Runnable {
 
             DataOutputStream dos = new DataOutputStream(os);
             dos.writeUTF("Estoy arriba");
+            dos.writeUTF("sucursal");
             dos.flush();
 
             this.cliente.close();
 
         } catch (ConnectException ce) {
-            System.out.println("No se encuentra el HOST");
+            System.out.println("No se encuentra el HOST "+this.ip+ " " + this.puerto);
         } catch (IOException io) {
             io.printStackTrace();
         }

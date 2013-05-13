@@ -65,7 +65,7 @@ public class Servidor implements Runnable {
                         SucursalApp.sinConexion = false;
                     }
                 } else { //Estoy recibiendo un archivo xml
-
+                    System.out.println("RECIBIENDO..");
                     String fileName = estado;
 
                     //Si alguna sucursal inicio sesion.

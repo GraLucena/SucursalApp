@@ -121,12 +121,16 @@ public class LoginSucursal extends javax.swing.JFrame {
                 Replicador replicador = new Replicador("Estoy arriba", SucursalApp.puertoEnvio, SucursalApp.puertoIp);
                 new Thread(replicador).start();
 
-                ArrayList<String> ips = new XMLSucursal().buscarIpsSucursales("registroSucursales.xml");
-                for (int j = 0; j < ips.size(); j++) {
-                    System.out.println(ips.get(j));
-                    new Thread(new Replicador("Estoy arriba", SucursalApp.puertoEnvio, ips.get(j))).start();
-
+                if (SucursalApp.coordinador.equals("si")) {
+                    ArrayList<String> ips = new XMLSucursal().buscarIpsSucursales("registroSucursales.xml");
+                    for (int j = 0; j < ips.size(); j++) {
+                        System.out.println(ips.get(j));
+                        new Thread(new Replicador("Estoy arriba", SucursalApp.puertoEnvio, ips.get(j))).start();
+                    }
+                } else {
+                    new Thread(new Replicador("Estoy arriba", SucursalApp.puertoEnvio, SucursalApp.puertoIp)).start();
                 }
+
 
             } catch (IOException ex) {
                 System.out.println("no obtuve el ip");
