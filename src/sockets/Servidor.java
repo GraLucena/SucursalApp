@@ -11,6 +11,7 @@ import sucursalapp.Coordinador;
 import sucursalapp.Historial;
 import sucursalapp.Sucursal;
 import sucursalapp.SucursalApp;
+import java.net.NoRouteToHostException;
 
 /**
  *
@@ -21,7 +22,7 @@ public class Servidor implements Runnable {
     private String puertoEscucha;
     private String puetoEnvio;
     private String ipEnvio;
-    private String ipsucursal = "192.168.1.22";
+    private String ipsucursal = "192.168.1.3";
 
     public Servidor(String puertoEscucha, String puertoEnvio, String ipEnvio) {
         this.puertoEscucha = puertoEscucha;
@@ -57,9 +58,9 @@ public class Servidor implements Runnable {
 
                 //Estoy recibiedo el mensaje desde Franquicia que esta arriba de nuevo.
                 if (estado.equals("Estoy arriba")) {
-                    
+                    System.out.println("Esta arriba");
                     if (SucursalApp.sinConexion) {
-                        System.out.println("esta arriba");
+                        System.out.println("esta arriba y estaba sin conexion");
                         ArrayList<String> archivos = new Historial().leerHistorial();
                         //replico cada archivo que esta pendiente
                         for (int i = 0; i < archivos.size(); i++) {
@@ -93,10 +94,14 @@ public class Servidor implements Runnable {
                         byte[] buffer = new byte[1024];
                         while (size > 0 && (bytesRead = in.read(buffer, 0, (int) Math.min(buffer.length, size))) != -1) {
                             output.write(buffer, 0, bytesRead);
+                            
+                            output.flush();
+                            
+                            
                             size -= bytesRead;
                         }
                         if (sucursalapp.SucursalApp.coordinador.equals("si")) {
-                            //System.out.println("estoy en el while");
+                            System.out.println("TRABAJAR COMO COORDINADOR");
                             coordinador.trabajarComoCoordinador(fileName, sender);
                             //System.out.println("");
 

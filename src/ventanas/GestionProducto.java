@@ -44,7 +44,7 @@ public class GestionProducto extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
         jLabel2.setText("SuperMercados XYZ");
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         gestor.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

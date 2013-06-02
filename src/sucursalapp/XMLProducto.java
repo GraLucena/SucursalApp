@@ -97,8 +97,8 @@ public class XMLProducto {
         try {
             SAXBuilder builder = new SAXBuilder(false);
             //System.out.println(usuario);
-            System.out.println(SucursalApp.nombresucursal);
-            Document doc = builder.build(SucursalApp.nombresucursal+".xml");
+            //System.out.println(SucursalApp.nombresucursal);
+            Document doc = builder.build(archivo);
             Element raiz = doc.getRootElement();
             List listaProducto = raiz.getChildren("producto");
             Iterator k = listaProducto.iterator();
@@ -108,15 +108,15 @@ public class XMLProducto {
                 Element descripcion = e.getChild("descripcion");
 
                 Element costo = e.getChild("costo");
-                Element cantidad = e.getChild("cantidad");
-                Element status = e.getChild("status");
+                //Element cantidad = e.getChild("cantidad");
+                //Element status = e.getChild("status");
                 Element imagen = e.getChild("imagen");
                 // if (archivo.equals(user.getText())) {
                 System.out.println(nombre.getText());
                 System.out.println(descripcion.getText());
                 System.out.println(costo.getText());
                 System.out.println(imagen.getText());
-                if(status.getText().equals("Activo"))
+                //if(status.getText().equals("Activo"))
                     ventana.agregarfila(nombre.getText(), descripcion.getText(), costo.getText(), costo.getText(), imagen.getText());
                 //}
             }

@@ -12,6 +12,7 @@ import java.net.ConnectException;
 import java.net.Socket;
 import sucursalapp.Historial;
 import sucursalapp.SucursalApp;
+import java.net.NoRouteToHostException;
 
 /**
  *
@@ -72,13 +73,25 @@ public class Replicador implements Runnable {
 
             this.cliente.close();
 
+        } catch (NoRouteToHostException nr) {
+            if (!nombreArchivo.equals("Estoy arriba")) {
+                System.out.println("No se encuentra el HOST " + this.ip + " " + this.puerto);
+                SucursalApp.sinConexion = true;
+                new Historial().escribirHistorial(nombreArchivo);
+            }
         } catch (ConnectException ce) {
             if (!nombreArchivo.equals("Estoy arriba")) {
-                System.out.println("No se encuentra el HOST" + this.ip + this.puerto);
+                System.out.println("No se encuentra el HOST " + this.ip + " " + this.puerto);
                 SucursalApp.sinConexion = true;
                 new Historial().escribirHistorial(nombreArchivo);
             }
 
+        } catch (java.net.SocketException nr) {
+            if (!nombreArchivo.equals("Estoy arriba")) {
+                System.out.println("No se encuentra el HOST " + this.ip + " " + this.puerto);
+                SucursalApp.sinConexion = true;
+                new Historial().escribirHistorial(nombreArchivo);
+            }
         } catch (FileNotFoundException nf) {
             System.out.println("No se ha encontrado el archivo");
             nf.printStackTrace();
@@ -102,10 +115,17 @@ public class Replicador implements Runnable {
 
             this.cliente.close();
 
+
+        } catch (NoRouteToHostException nr) {
+            System.out.println("No se encuentra el HOST " + this.ip + " " + this.puerto);
+
         } catch (ConnectException ce) {
-            System.out.println("No se encuentra el HOST "+this.ip+ " " + this.puerto);
+            System.out.println("No se encuentra el HOST " + this.ip + " " + this.puerto);
+        } catch (java.net.SocketException nr) {
+            System.out.println("No se encuentra el HOST " + this.ip + " " + this.puerto);
         } catch (IOException io) {
             io.printStackTrace();
         }
+
     }
 }
