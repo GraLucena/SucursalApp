@@ -49,6 +49,7 @@ public class GestionInventario extends javax.swing.JFrame {
         jBActualizar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -63,7 +64,7 @@ public class GestionInventario extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(gestor);
 
-        jScrollPane1.setBounds(50, 110, 452, 140);
+        jScrollPane1.setBounds(50, 110, 454, 140);
         jLayeredPane1.add(jScrollPane1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jBActualizar.setFont(new java.awt.Font("Lucida Grande", 1, 11)); // NOI18N
@@ -74,7 +75,7 @@ public class GestionInventario extends javax.swing.JFrame {
                 jBActualizarActionPerformed(evt);
             }
         });
-        jBActualizar.setBounds(210, 270, 170, 60);
+        jBActualizar.setBounds(60, 280, 170, 60);
         jLayeredPane1.add(jBActualizar, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/carrinho supermercado.png"))); // NOI18N
@@ -83,8 +84,18 @@ public class GestionInventario extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
         jLabel2.setText("Inventario SuperMercados XYZ");
-        jLabel2.setBounds(50, 60, 270, 24);
+        jLabel2.setBounds(50, 60, 285, 22);
         jLayeredPane1.add(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Green-Dollar-icon.png"))); // NOI18N
+        jButton1.setText("Comprar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jButton1.setBounds(390, 290, 108, 52);
+        jLayeredPane1.add(jButton1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondos-verdes.jpg"))); // NOI18N
         jLabel3.setBounds(-5, 0, 600, 370);
@@ -130,6 +141,19 @@ public class GestionInventario extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_jBActualizarActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+         int selectedRow = this.gestor.getSelectedRow();
+        if (this.gestor.getSelectedRow() != -1) {
+           
+            String cantidad1 = (String) this.gestor.getModel().getValueAt(selectedRow, 3);
+            VentasSucursal ventanaVender = new VentasSucursal(this, SucursalApp.nombresucursal, cantidad1);
+            ventanaVender.setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(null, "No ha seleccionado ningun producto", "ERROR", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -201,6 +225,7 @@ public class GestionInventario extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable gestor;
     private javax.swing.JButton jBActualizar;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

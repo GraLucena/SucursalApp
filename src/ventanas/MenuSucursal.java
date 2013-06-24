@@ -35,8 +35,10 @@ public class MenuSucursal extends javax.swing.JFrame {
         jBSucursales = new javax.swing.JButton();
         jLsucursal = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        jBSucursales1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jBSucursales2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBounds(new java.awt.Rectangle(0, 0, 0, 0));
@@ -49,29 +51,40 @@ public class MenuSucursal extends javax.swing.JFrame {
                 jBProductosActionPerformed(evt);
             }
         });
-        jBProductos.setBounds(180, 160, 180, 60);
+        jBProductos.setBounds(180, 140, 180, 60);
         jLayeredPane1.add(jBProductos, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jBSucursales.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jBSucursales.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Inventory.png"))); // NOI18N
-        jBSucursales.setText("Inventario");
+        jBSucursales.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Green-Dollar-icon.png"))); // NOI18N
+        jBSucursales.setText("Ventas");
         jBSucursales.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBSucursalesActionPerformed(evt);
             }
         });
-        jBSucursales.setBounds(180, 240, 180, 60);
+        jBSucursales.setBounds(180, 280, 180, 60);
         jLayeredPane1.add(jBSucursales, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jLsucursal.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLsucursal.setText(" ");
-        jLsucursal.setBounds(50, 20, 70, 15);
+        jLsucursal.setBounds(50, 20, 70, 14);
         jLayeredPane1.add(jLsucursal, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/carrinho supermercado.png"))); // NOI18N
         jLabel3.setText("Logo");
         jLabel3.setBounds(320, 20, 90, 100);
         jLayeredPane1.add(jLabel3, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        jBSucursales1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jBSucursales1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Inventory.png"))); // NOI18N
+        jBSucursales1.setText("Inventario");
+        jBSucursales1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBSucursales1ActionPerformed(evt);
+            }
+        });
+        jBSucursales1.setBounds(180, 210, 180, 60);
+        jLayeredPane1.add(jBSucursales1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
         jLabel1.setText("SuperMercados XYZ");
@@ -82,6 +95,17 @@ public class MenuSucursal extends javax.swing.JFrame {
         jLabel2.setText("jLabel2");
         jLabel2.setBounds(0, 0, 540, 350);
         jLayeredPane1.add(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        jBSucursales2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jBSucursales2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Inventory.png"))); // NOI18N
+        jBSucursales2.setText("Inventario");
+        jBSucursales2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBSucursales2ActionPerformed(evt);
+            }
+        });
+        jBSucursales2.setBounds(180, 210, 180, 60);
+        jLayeredPane1.add(jBSucursales2, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -106,7 +130,7 @@ public class MenuSucursal extends javax.swing.JFrame {
     }//GEN-LAST:event_jBProductosActionPerformed
 
     private void jBSucursalesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSucursalesActionPerformed
-        GestionInventario inventario = new GestionInventario();
+        GestionVentas ventas = new GestionVentas();
 //        XMLInventario inventario = new XMLInventario();
 //        File f = new File("inventarioProductos.xml");
 //        if (f.exists() == true) 
@@ -115,8 +139,18 @@ public class MenuSucursal extends javax.swing.JFrame {
 //              inventario.CrearInventario();   
 //        
 //        //this.dispose();
-        inventario.setVisible(true);
+        ventas.setVisible(true);
     }//GEN-LAST:event_jBSucursalesActionPerformed
+
+    private void jBSucursales1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSucursales1ActionPerformed
+        // TODO add your handling code here:
+        GestionInventario inventario = new GestionInventario();
+        inventario.setVisible(true);
+    }//GEN-LAST:event_jBSucursales1ActionPerformed
+
+    private void jBSucursales2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSucursales2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jBSucursales2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -158,6 +192,8 @@ public class MenuSucursal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBProductos;
     private javax.swing.JButton jBSucursales;
+    private javax.swing.JButton jBSucursales1;
+    private javax.swing.JButton jBSucursales2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

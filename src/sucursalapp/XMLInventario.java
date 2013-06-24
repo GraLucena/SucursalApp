@@ -121,7 +121,7 @@ public class XMLInventario {
                     Element cantidad = e.getChild("cantidad");
                     cantidad.setText(cantidadI);
 
-                   new Thread(new Replicador(nombreOrig+".xml", SucursalApp.puertoEnvio, SucursalApp.puertoIp)).start();
+                   //new Thread(new Replicador(nombreOrig+".xml", SucursalApp.puertoEnvio, SucursalApp.puertoIp)).start();
                    
                 }
 
