@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <producto>
+    <nombre>Cebolla</nombre>
+    <descripcion>Cebolla</descripcion>
+    <costo>100</costo>
+    <cantidad>655</cantidad>
+    <status>Inactivo</status>
+    <imagen>cebolla.jpg</imagen>
+  </producto>
+  <producto>
+    <nombre>Cafe</nombre>
+    <descripcion>Cafe Fama de America</descripcion>
+    <costo>12</costo>
+    <cantidad>13</cantidad>
+    <status>Activo</status>
+    <imagen>cafe.jpg</imagen>
+  </producto>
+  <producto>
+    <nombre>Pan</nombre>
+    <descripcion>Pan blanco</descripcion>
+    <costo>100</costo>
+    <cantidad>0</cantidad>
+    <status>Activo</status>
+    <imagen>pan.jpg</imagen>
+  </producto>
+  <producto>
+    <nombre>Mantequilla</nombre>
+    <descripcion>asdf</descripcion>
+    <costo>12</costo>
+    <cantidad>0</cantidad>
+    <status>Activo</status>
+    <imagen>pan.jpg</imagen>
+  </producto>
+  <producto>
+    <nombre>santamaria</nombre>
+    <descripcion>1234</descripcion>
+    <costo>12</costo>
+    <cantidad>12</cantidad>
+    <status>Activo</status>
+    <imagen>pan.jpg</imagen>
+  </producto>
+  <producto>
+    <nombre>graciassenor</nombre>
+    <descripcion>asdfg</descripcion>
+    <costo>123</costo>
+    <cantidad>850</cantidad>
+    <status>Activo</status>
+    <imagen>pan.jpg</imagen>
+  </producto>
+</root>
+
