@@ -117,22 +117,15 @@ public class LoginSucursal extends javax.swing.JFrame {
                 XMLInventario actualizarXml = new XMLInventario(SucursalApp.nombresucursal);
                 actualizarXml.actualizarIpSucursales(this.jTnombre.getText(), i.getHostAddress());
 
-                Coordinador validarCoordinador = new Coordinador();
-                Sucursal sucursal = new Sucursal();
-                validarCoordinador.buscarCoordinador(this.jTnombre.getText());
 
-
-                System.out.println("ESTOY ARRIBAAAA!! " + SucursalApp.puertoEnvio + " " + SucursalApp.puertoIp);
                 Replicador replicador = new Replicador("Estoy arriba", SucursalApp.puertoEnvio, SucursalApp.puertoIp);
                 new Thread(replicador).start();
 
-                System.out.println("Coordinador? " + SucursalApp.coordinador);
                 if (SucursalApp.coordinador.equals("si")) {
-                    System.out.println("Estoya arribaaa");
                     ArrayList<String> ips = new XMLSucursal().buscarIpsSucursales("registroSucursales.xml");
                     for (int j = 0; j < ips.size(); j++) {
                         System.out.println(ips.get(j));
-                        new Thread(new Replicador("Estoy arriba", "10000", ips.get(j))).start();
+                        new Thread(new Replicador("Estoy arriba", SucursalApp.puertoEnvio, ips.get(j))).start();
                     }
                 } else {
                     new Thread(new Replicador("Estoy arriba", SucursalApp.puertoEnvio, SucursalApp.puertoIp)).start();
@@ -142,6 +135,11 @@ public class LoginSucursal extends javax.swing.JFrame {
                 System.out.println("no obtuve el ip");
             }
 
+
+
+            Coordinador validarCoordinador = new Coordinador();
+            Sucursal sucursal = new Sucursal();
+            validarCoordinador.buscarCoordinador(this.jTnombre.getText());
 
             MenuSucursal menu = new MenuSucursal(this.jTnombre.getText());
             menu.setVisible(true);
