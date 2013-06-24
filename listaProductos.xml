@@ -1,136 +1,70 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <root>
   <producto>
-    <nombre>Cafe</nombre>
-    <descripcion>Cafe Fama de America</descripcion>
-    <costo>12</costo>
-    <imagen>cafe.jpg</imagen>
+    <nombre>Harina</nombre>
+    <descripcion>Harina Pan</descripcion>
+    <costo>20</costo>
+    <status>Activo</status>
+  </producto>
+  <producto>
+    <nombre>Azucar</nombre>
+    <descripcion>Azucar Morena</descripcion>
+    <costo>25</costo>
+    <status>Activo</status>
+  </producto>
+  <producto>
+    <nombre>Cebolla</nombre>
+    <descripcion>Cebolla</descripcion>
+    <costo>100</costo>
+    <status>Inactivo</status>
   </producto>
   <producto>
     <nombre>Pan</nombre>
-    <descripcion>Pan blanco</descripcion>
+    <descripcion>Pan</descripcion>
     <costo>100</costo>
-    <imagen>pan.jpg</imagen>
+    <status>Activo</status>
   </producto>
   <producto>
-    <nombre>Mantequilla</nombre>
-    <descripcion>asdf</descripcion>
+    <nombre>Caraotas</nombre>
+    <descripcion>Caraotas</descripcion>
+    <costo>100</costo>
+    <status>Activo</status>
+  </producto>
+  <producto>
+    <nombre>Naranja</nombre>
+    <descripcion>Naranja</descripcion>
+    <costo>20</costo>
+    <status>Inactivo</status>
+  </producto>
+  <producto>
+    <nombre>Lechuga</nombre>
+    <descripcion>Lechuga fresa</descripcion>
     <costo>12</costo>
-    <imagen>pan.jpg</imagen>
+    <status>Activo</status>
   </producto>
   <producto>
-    <nombre>santamaria</nombre>
-    <descripcion>1234</descripcion>
+    <nombre>repollo</nombre>
+    <descripcion>rchicken</descripcion>
+    <costo>123</costo>
+    <status>Activo</status>
+  </producto>
+  <producto>
+    <nombre>hola</nombre>
+    <descripcion>hola</descripcion>
     <costo>12</costo>
-    <imagen>pan.jpg</imagen>
+    <status>Activo</status>
   </producto>
   <producto>
-    <nombre>Pedro</nombre>
-    <descripcion>Pedro</descripcion>
-    <costo>1</costo>
-    <imagen>pan.jpg</imagen>
+    <nombre>g</nombre>
+    <descripcion>hjhj</descripcion>
+    <costo>hvj</costo>
+    <status>Activo</status>
   </producto>
   <producto>
-    <nombre>DiegoV</nombre>
-    <descripcion>diego probando</descripcion>
-    <costo>111</costo>
-    <imagen>asdf</imagen>
-  </producto>
-  <producto>
-    <nombre>DanielS</nombre>
-    <descripcion>probando daniel</descripcion>
-    <costo>999</costo>
-    <imagen>asdf.jpg</imagen>
-  </producto>
-  <producto>
-    <nombre>DiegoDaniel</nombre>
-    <descripcion>ultima prueba</descripcion>
-    <costo>000</costo>
-    <imagen>asdf.jpg</imagen>
-  </producto>
-  <producto>
-    <nombre>ProductoDef</nombre>
-    <descripcion>ewqewq</descripcion>
-    <costo>12</costo>
-    <imagen>wewq</imagen>
-  </producto>
-  <producto>
-    <nombre>AHORASI</nombre>
-    <descripcion>sdsad</descripcion>
-    <costo>999</costo>
-    <imagen>sdasd</imagen>
-  </producto>
-  <producto>
-    <nombre>SIIII</nombre>
-    <descripcion>sdsad</descripcion>
-    <costo>2222</costo>
-    <imagen>sdasd</imagen>
-  </producto>
-  <producto>
-    <nombre>NOOO</nombre>
-    <descripcion>wwqeqw</descripcion>
-    <costo>9999</costo>
-    <imagen>eqwewq</imagen>
-  </producto>
-  <producto>
-    <nombre>ASDF</nombre>
-    <descripcion>asdfg</descripcion>
-    <costo>1111</costo>
-    <imagen>asd</imagen>
-  </producto>
-  <producto>
-    <nombre>ASDF</nombre>
-    <descripcion>asdfg</descripcion>
-    <costo>11112</costo>
-    <imagen>asd</imagen>
-  </producto>
-  <producto>
-    <nombre>ASDF</nombre>
-    <descripcion>asdfg</descripcion>
-    <costo>11112</costo>
-    <imagen>asd</imagen>
-  </producto>
-  <producto>
-    <nombre>ASDF</nombre>
-    <descripcion>asdfg</descripcion>
-    <costo>11112</costo>
-    <imagen>asd</imagen>
-  </producto>
-  <producto>
-    <nombre>DANIELSIERRA</nombre>
-    <descripcion>asdf</descripcion>
-    <costo>11111</costo>
-    <imagen>asdf</imagen>
-  </producto>
-  <producto>
-    <nombre>elultimo</nombre>
-    <descripcion>qwerty</descripcion>
-    <costo>888</costo>
-    <imagen>qwerty</imagen>
-  </producto>
-  <producto>
-    <nombre>DIEGOVIERMA</nombre>
-    <descripcion>qwert</descripcion>
-    <costo>444</costo>
-    <imagen>qweqw</imagen>
-  </producto>
-  <producto>
-    <nombre>DIEGOVIERMA</nombre>
-    <descripcion>qwert</descripcion>
-    <costo>444</costo>
-    <imagen>qweqw</imagen>
-  </producto>
-  <producto>
-    <nombre>DIEGOVIERMA</nombre>
-    <descripcion>qwert</descripcion>
-    <costo>444</costo>
-    <imagen>qweqw</imagen>
-  </producto>
-  <producto>
-    <nombre>DIEGOVIERMA</nombre>
-    <descripcion>qwert</descripcion>
-    <costo>444</costo>
-    <imagen>qweqw</imagen>
+    <nombre>jh</nombre>
+    <descripcion>uhbuj</descripcion>
+    <costo>uig</costo>
+    <status>Activo</status>
   </producto>
 </root>
 
