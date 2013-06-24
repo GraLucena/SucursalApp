@@ -4,7 +4,6 @@
  */
 package sucursalapp;
 
-import sockets.Conexion;
 import sockets.Replicador;
 import ventanas.LoginSucursal;
 import sockets.Servidor;
@@ -20,8 +19,6 @@ public class SucursalApp {
     public static boolean sinConexion = false;
     public static String puertoEnvio = "";
     public static String puertoIp = "";
-    public static boolean tengoInternet = false;
-    
     /**
      * @param args the command line arguments
      */
@@ -34,8 +31,6 @@ public class SucursalApp {
 
         Servidor servidor = new Servidor(args[0], args[1], args[2]);
         new Thread(servidor).start();
-        
-        new Thread(new Conexion()).start();
         
     }
 }
