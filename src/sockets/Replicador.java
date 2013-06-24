@@ -9,15 +9,10 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.net.ConnectException;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.Socket;
 import sucursalapp.Historial;
 import sucursalapp.SucursalApp;
 import java.net.NoRouteToHostException;
-import java.net.URL;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -83,20 +78,12 @@ public class Replicador implements Runnable {
                 System.out.println("No se encuentra el HOST " + this.ip + " " + this.puerto);
                 SucursalApp.sinConexion = true;
                 new Historial().escribirHistorial(nombreArchivo);
-
-                
-                
-                
-
             }
         } catch (ConnectException ce) {
             if (!nombreArchivo.equals("Estoy arriba")) {
                 System.out.println("No se encuentra el HOST " + this.ip + " " + this.puerto);
                 SucursalApp.sinConexion = true;
                 new Historial().escribirHistorial(nombreArchivo);
-                
-                
-                
             }
 
         } catch (java.net.SocketException nr) {
@@ -104,11 +91,6 @@ public class Replicador implements Runnable {
                 System.out.println("No se encuentra el HOST " + this.ip + " " + this.puerto);
                 SucursalApp.sinConexion = true;
                 new Historial().escribirHistorial(nombreArchivo);
-                
-                
-                
-                
-                
             }
         } catch (FileNotFoundException nf) {
             System.out.println("No se ha encontrado el archivo");
@@ -146,5 +128,4 @@ public class Replicador implements Runnable {
         }
 
     }
-
 }
