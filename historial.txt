@@ -1,2 +1,0 @@
-sucursal2.xml
-listaProductos.xml
