@@ -91,7 +91,11 @@ public class Replicador implements Runnable {
             }
         } catch (ConnectException ce) {
             if (!nombreArchivo.equals("Estoy arriba")) {
+<<<<<<< HEAD
                 System.out.println("No se encuentra el HOST " + this.ip + " " + this.puerto);
+=======
+                System.out.println("No se encuentra el HOST " + this.ip + this.puerto);
+>>>>>>> gra2
                 SucursalApp.sinConexion = true;
                 new Historial().escribirHistorial(nombreArchivo);
                 
@@ -138,10 +142,22 @@ public class Replicador implements Runnable {
             System.out.println("No se encuentra el HOST " + this.ip + " " + this.puerto);
 
         } catch (ConnectException ce) {
+<<<<<<< HEAD
             System.out.println("No se encuentra el HOST " + this.ip + " " + this.puerto);
         } catch (java.net.SocketException nr) {
             System.out.println("No se encuentra el HOST " + this.ip + " " + this.puerto);
         } catch (IOException io) {
+=======
+            System.out.println("No se encuentra el HOST "+this.ip+ " " + this.puerto);
+        } 
+        catch (java.net.SocketException nr){
+            
+                        System.out.println("No se encuentra el HOST ");
+
+        }
+        
+        catch (IOException io) {
+>>>>>>> gra2
             io.printStackTrace();
         }
 
