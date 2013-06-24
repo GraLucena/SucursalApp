@@ -5,6 +5,7 @@
     <descripcion>Cafe Fama de America</descripcion>
     <costo>12</costo>
     <imagen>cafe.jpg</imagen>
+<<<<<<< HEAD
   </producto>
   <producto>
     <nombre>Pan</nombre>
@@ -131,6 +132,26 @@
     <descripcion>qwert</descripcion>
     <costo>444</costo>
     <imagen>qweqw</imagen>
+=======
+  </producto>
+  <producto>
+    <nombre>Pan</nombre>
+    <descripcion>Pan blanco</descripcion>
+    <costo>100</costo>
+    <imagen>pan.jpg</imagen>
+  </producto>
+  <producto>
+    <nombre>Mantequilla</nombre>
+    <descripcion>asdf</descripcion>
+    <costo>12</costo>
+    <imagen>pan.jpg</imagen>
+  </producto>
+  <producto>
+    <nombre>santamaria</nombre>
+    <descripcion>1234</descripcion>
+    <costo>12</costo>
+    <imagen>pan.jpg</imagen>
+>>>>>>> gra2
   </producto>
 </root>
 
