@@ -51,3 +51,5 @@ xml-resources/web-service-references/ServicioWeb1/wsdl/192.168.1.14_8080/PruebaS
 build.xml
 
 *.xml
+
+nbproject/private/private.xml
